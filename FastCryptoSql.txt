@@ -1,0 +1,27 @@
+
+CREATE TABLE `conto` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `idUtente` int NOT NULL,
+  `euro` double NOT NULL,
+  `bitcoin` double NOT NULL,
+  `ethereum` double NOT NULL,
+  `ripple` double NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_contoUtente` (`idUtente`),
+  CONSTRAINT `fk_contoUtente` FOREIGN KEY (`idUtente`) REFERENCES `utente` (`id`)
+);
+
+
+CREATE TABLE `utente` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `cognome` varchar(255) NOT NULL,
+  `nazione` varchar(255) DEFAULT NULL,
+  `indirizzo` varchar(255) DEFAULT NULL,
+  `città` varchar(255) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `dataNascita` date DEFAULT NULL,
+  `sesso` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
